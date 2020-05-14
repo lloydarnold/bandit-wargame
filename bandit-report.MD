@@ -153,4 +153,15 @@ These steps were repeated several times, before I eventually reached the origina
 
 Password to bandit 13 is ` 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL `
 
+## Level 14
+The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Note: localhost is a hostname that refers to the machine you are working on
+
+Here, we are given bandit 14's private ssh key, which will allow us to log in as them. This is contained in a file called sshkey.private, in bandit 13's home directory. To pass a key in, we use the ` -i ` flag with our ssh command, like so:
+
+``` ssh -i sshkey.private bandit14@localhost ```
+
+This logs us in as bandit 14. From here, we can navigate to the directory given to us and simply read the password.
+
+The password to bandit 14 is ` 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e `
+
 
