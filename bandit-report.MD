@@ -32,3 +32,22 @@ The password for the next level is stored in a hidden file in the inhere directo
 We can change into this directory using `cd inhere`, and then reveal the hidden file, which is called '.hidden'. We can then read the contents of this file with the command `cat .hidden `.
 
 The password for bandit4 is ` pIwrPrtPN36QITSp3EQaw936yaFoFgAB `
+
+## Level 5
+The password for the next level is stored in the only human-readable file in the inhere directory. Tip: if your terminal is messed up, try the “reset” command.
+
+Again, we can change to the inhere directory using `cd inhere`.
+Running `ls` then reveals that there are ten files in this directory. 
+As we know that the password is contained in a human readable file, we need to somehow filter the files by filetype. This can be done with the command 
+``` find . -type f | xargs file```. 
+This works by finding all the files in the current directory, and passing these as an argument into the file command, which then lists them by type. Doing so reveals to us that 9 of the 10 files are of type 'data', but one is of type 'ASCII text'. Therefore, the password must be in this file. 
+
+This works given the relatively small number of files in this directory, but what if it were larger?
+We could extend this command by piping the output into ` grep text`, giving us a complete command of 
+
+``` find . -type f | xargs file | grep text```
+
+This would return only the file marked as ASCII text, omitting all others. 
+
+The password for bandit5 is koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+
