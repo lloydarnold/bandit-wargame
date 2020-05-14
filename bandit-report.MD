@@ -19,4 +19,9 @@ This can be revealed with the `ls` command, but running `cat -` confuses the sys
 
 The password for bandit2 is ` CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9 `
 
+## Level 3
+The password for the next level is stored in a file called spaces in this filename located in the home directory
 
+This cannot be accessed by simply running `cat spaces in this file name`, as the system will register this as four separate files. Instead, we can either use the escape character, '\', in front of the spaces, or specify the file name in quotation marks. This gives us either `cat spaces\ in\ this\ filename` or ` cat "spaces in this file name" `
+
+The password for bandit3 is ` UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK `
