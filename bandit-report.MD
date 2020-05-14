@@ -182,4 +182,12 @@ Here we need to follow a similar process to on the previous level, but here we n
 
 As before, we then simply input the previous password to get the next one. The password for bandit 16 is ` cluFn7wTiGryunymYOu4RcffSxQluehd `
 
+## Level 17
+The credentials for the next level can be retrieved by submitting the password of the current level to a port on localhost in the range 31000 to 32000. First find out which of these ports have a server listening on them. Then find out which of those speak SSL and which don’t. There is only 1 server that will give the next credentials, the others will simply send back to you whatever you send to it.
+
+The first thing that we need to do here is to find out which ports are open. This can be done using netcat, see below
+
+``` nc -zv localhost 3100-3200 ```
+
+This tells us that there are five open ports. Using `openssl s_client` as above, we can test to see which ports are accepting ssl. When we find the correct port, we get an sshkey in response - this can be used to log into bandit17. 
 
