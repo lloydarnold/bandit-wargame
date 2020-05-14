@@ -51,3 +51,14 @@ This would return only the file marked as ASCII text, omitting all others.
 
 The password for bandit5 is koReBOKuIDDepwhWk7jZC0RTdopnAYKh
 
+## Level 6
+In this level, we are given three properties of the file containing the password. It is human readable, 1033 bytes and not executable.
+
+Therefore, we need to somehow string these conditions together into a search command. We can again start with `find . -type f`, which is going to recursively find all files of in this directory and subdirectories. However, this gives an unusably long output. At this point, one might think to apply ` | xargs file | grep text`, as in the previous level.
+
+This was tried, but still presented the issue of giving an unworkably large number of files. For that reason, I changed the command used, and introduced the `-exec` flag to my initial find statement. This allows us to also run ls with the appropriate flags (to list more information on the file, including file size and whether it is executable). 
+The flags I used were -la; l is the alias of long listing, giving more information, and a is the alias for all, meaning even hidden files are included. From here, I just needed to add a filter so that only files 1033 bytes long were shown - this is done using the `grep 1033` command. By piping these together, we are left with
+
+``` find . type -f -exec ls -la {} \; | grep 1033 ```
+
+The password for bandit6 is DXjZPULLxYr17uwoI01bNLQbtFemEgo7
