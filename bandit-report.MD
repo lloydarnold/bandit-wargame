@@ -173,4 +173,13 @@ The first thing we need to do is open a connection to localhost, on port 30000. 
 
 Once our connection is opened, we simply need to input the password to bandit 14, and the server gives back the password to bandit 15. This is ` BfMYroe26WYalil77FoDi9qh59eK5xNr `
 
+## Level 16
+The password for the next level can be retrieved by submitting the password of the current level to port 30001 on localhost using SSL encryption.
+
+Here we need to follow a similar process to on the previous level, but here we need to use an ssl connection ratherthan simple TCP. This can be done with the following command:
+
+``` openssl s_client -connect localhost:30001 ```
+
+As before, we then simply input the previous password to get the next one. The password for bandit 16 is ` cluFn7wTiGryunymYOu4RcffSxQluehd `
+
 
