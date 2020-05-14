@@ -91,4 +91,17 @@ As we know that the password is next to the word millionth, we want to return al
 
 There is only one line containing the word millionth, so we immediately find our password. It is ` cvX2JJa4CFALtqS87jk27qwqGhBM9plV '
 
+## Level 9
+Our guidance here is that the password for the next level is stored in the file data.txt and is the only line of text that occurs only once.
+
+Immediately, by first thought was to use the uniq command, with the -u flag - this should filter a document and only return lines that occur once. As such, I ran 
+
+``` cat data.txt | uniq -u ```
+
+However, this caused the entire file to be printed. On reading the uniq man page, I discovered that uniq only compares adjacent lines, and that I therefore needed to sort the file first. A working solution then is 
+
+``` cat data.txt | sort | uniq -q ```
+
+The password to bandit 9 is ` UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR `
+
 
