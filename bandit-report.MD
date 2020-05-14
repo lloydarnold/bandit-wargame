@@ -62,3 +62,24 @@ The flags I used were -la; l is the alias of long listing, giving more informati
 ``` find . type -f -exec ls -la {} \; | grep 1033 ```
 
 The password for bandit6 is DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+
+## Level 7
+The password for the next level is stored somewhere on the server and has all of the following properties:
+
+* Owned by user Bandit7
+* Owned by group Bandit6
+* 33 bytes in size
+
+
+Immediately, we know that we wish to search the entire file system. This can be done with ` find / `.
+As before, we know that we want to look for all files, so we can introduce the flag `-type f`. We can then make use of the `-user`, `-group` and `-size` flags for the find command, giving us:
+
+``` $ find / -user bandit7 -group bandit6 -type f -size 33c ```
+
+This works, but we get a slew of permission denied errors. This makes it difficult to identify where the correct file is. We want to somehow suppress these - this can be done by introducing `2>/dev/null` to the command, giving us a final command of 
+
+``` $ find / -user bandit7 -group bandit6 -type f -size 33c 2>/dev/null ```
+
+The bandit7 password is ` HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs `
+
+
