@@ -104,4 +104,13 @@ However, this caused the entire file to be printed. On reading the uniq man page
 
 The password to bandit 9 is ` UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR `
 
+## Level 10
+The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
+
+As we are told that the password is 'one of the few human-readable strings' we can use the command `strings`, which will return all human-readable strings in the document. We also know that the password is preceded by a string of equals signs, we can pipe the output of this command into a grep search again. This reveals the password. The final command was
+
+``` strings data.txt | grep === ```
+
+This reveals that the password to bandit 10 is ` truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk `
+
 
