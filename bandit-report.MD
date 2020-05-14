@@ -129,4 +129,28 @@ To decode this message, we need to shift every letter back by 13 places. This ca
 
 The password for bandit 12 is ` 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu `
 
+## Level 13
+The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the manpages!)
+
+I started off here by following their suggestion, and creating / navigating to /tmp/lloyd. As we know that data.txt is a hexdump, the first thing to do is apply a reverse hexdump to this file. This is done using the following command
+
+``` xxd -r > data ```
+
+This pipes the output of the reverse hexdump command into a new file, 'data'.
+We know that this file has been compressed, but we don't know how. We can find this out by running `file data`. The output of this tells us that 'data' contains gzip compressed data. Therefore, we want to decompress it using gzip.
+Simply running `gzip -d data` throws an error, as it complanes that the suffix is unknown, so we can instead use 
+
+``` zcat -d data > data2.bin```
+
+This decompresses the file and stores the output in data2.bin, which was the original file name. Again, we can run the `file` command to find out how this has been compressed.
+This informs us that the file was compressed with bzip2. We can decompress it with 
+
+``` bzip2 -d data2.bin```
+
+Running this decompresses the output into a new file called 'data2.bin.out' but this is not a particularly nice name, so I renamed it to 'data3.bin' using the `mv` command. Again, I checked how it can been compressed using `file`.
+
+These steps were repeated several times, before I eventually reached the original ASCII text file containing the password.
+
+Password to bandit 13 is ` 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL `
+
 
