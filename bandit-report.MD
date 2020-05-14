@@ -113,4 +113,11 @@ As we are told that the password is 'one of the few human-readable strings' we c
 
 This reveals that the password to bandit 10 is ` truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk `
 
+## Level 11
+The password for the next level is stored in the file data.txt, which contains base64 encoded data
+
+In order to be able to read the contents of the file, we therefore need to decode it. This can be done with the command `base64 -d data.txt`. Running this reveals the password.
+
+The password to bandit 11 is ` IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR ` 
+
 
