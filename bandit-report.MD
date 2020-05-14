@@ -89,7 +89,7 @@ As we know that the password is next to the word millionth, we want to return al
 
 ``` cat data.txt | grep millionth ```
 
-There is only one line containing the word millionth, so we immediately find our password. It is ` cvX2JJa4CFALtqS87jk27qwqGhBM9plV '
+There is only one line containing the word millionth, so we immediately find our password. It is ` cvX2JJa4CFALtqS87jk27qwqGhBM9plV `
 
 ## Level 9
 Our guidance here is that the password for the next level is stored in the file data.txt and is the only line of text that occurs only once.
@@ -119,5 +119,14 @@ The password for the next level is stored in the file data.txt, which contains b
 In order to be able to read the contents of the file, we therefore need to decode it. This can be done with the command `base64 -d data.txt`. Running this reveals the password.
 
 The password to bandit 11 is ` IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR ` 
+
+## Level 12
+The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions
+
+To decode this message, we need to shift every letter back by 13 places. This can be done using the `tr` (transliterate) command, and an appropriate filter. Again, we can use `cat data.txt | ` to pipe the file contents in. Our final command is 
+
+``` $ cat data.txt | tr [n-za-mN-ZA-M] [a-zA-Z] ```
+
+The password for bandit 12 is ` 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu `
 
 
