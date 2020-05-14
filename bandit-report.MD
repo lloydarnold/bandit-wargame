@@ -82,4 +82,13 @@ This works, but we get a slew of permission denied errors. This makes it difficu
 
 The bandit7 password is ` HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs `
 
+## Level 8
+The password for the next level is stored in the file data.txt next to the word millionth
+
+As we know that the password is next to the word millionth, we want to return all lines in the file that contain the world 'millionth'. This can be done by piping the contents of the file (using the `cat` command) into grep, as we have seen before. This gives a command of 
+
+``` cat data.txt | grep millionth ```
+
+There is only one line containing the word millionth, so we immediately find our password. It is ` cvX2JJa4CFALtqS87jk27qwqGhBM9plV '
+
 
