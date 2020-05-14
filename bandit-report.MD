@@ -25,3 +25,10 @@ The password for the next level is stored in a file called spaces in this filena
 This cannot be accessed by simply running `cat spaces in this file name`, as the system will register this as four separate files. Instead, we can either use the escape character, '\', in front of the spaces, or specify the file name in quotation marks. This gives us either `cat spaces\ in\ this\ filename` or ` cat "spaces in this file name" `
 
 The password for bandit3 is ` UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK `
+
+## Level 4
+The password for the next level is stored in a hidden file in the inhere directory.
+
+We can change into this directory using `cd inhere`, and then reveal the hidden file, which is called '.hidden'. We can then read the contents of this file with the command `cat .hidden `.
+
+The password for bandit4 is ` pIwrPrtPN36QITSp3EQaw936yaFoFgAB `
