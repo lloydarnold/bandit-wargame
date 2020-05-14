@@ -164,4 +164,13 @@ This logs us in as bandit 14. From here, we can navigate to the directory given 
 
 The password to bandit 14 is ` 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e `
 
+## Level 15
+The password for the next level can be retrieved by submitting the password of the current level to port 30000 on localhost.
+
+The first thing we need to do is open a connection to localhost, on port 30000. This can be done with the command 
+
+``` nc localhost 30000 ```
+
+Once our connection is opened, we simply need to input the password to bandit 14, and the server gives back the password to bandit 15. This is ` BfMYroe26WYalil77FoDi9qh59eK5xNr `
+
 
