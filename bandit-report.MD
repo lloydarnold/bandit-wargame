@@ -195,7 +195,7 @@ This tells us that there are five open ports. Using `openssl s_client` as above,
 There are 2 files in the homedirectory: passwords.old and passwords.new. The password for the next level is in passwords.new and is the only line that has been changed between passwords.old and passwords.new
 
 All we need to do here is find the difference between two files. Fortunately, there's a command for that -- `diff `. Running the command ` diff passwords.old passwords.new ` will identify which line has been changed, and give us the final password (as below).
-
+ueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
 The password to Bandit 18 is ` kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd `
 
 ## Level 19
@@ -211,3 +211,20 @@ Executing this (and entering the bandit18 password) logged into the server and c
 The password to bandit 19 is ` IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x `
 
 ## Level 20
+To gain access to the next level, you should use the setuid binary in the homedirectory. Execute it without arguments to find out how to use it. The password for this level can be found in the usual place (/etc/bandit_pass), after you have used the setuid binary.
+
+On logging in, we are met with an executable file called bandit20-do. The first thing I did was execute it (with `./bandit20-do`). This then told me that it would let me run a command as another user. As I knew that the password was in a file called bandit20, at path `/etc/bandit_pass/bandit20`, I ran the command 
+
+``` $ ./bandit20-do cat /etc/bandit_pass/bandit20 ```
+
+This revealed that the password for user bandit20 is ` GbKksEFF4yrVs6il55v6gwY5aVje5f0j `
+
+## Level 21
+There is a setuid binary in the homedirectory that does the following: it makes a connection to localhost on the port you specify as a commandline argument. It then reads a line of text from the connection and compares it to the password in the previous level (bandit20). If the password is correct, it will transmit the password for the next level (bandit21).
+
+
+
+## Level 22
+A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+
+
