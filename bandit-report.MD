@@ -222,6 +222,15 @@ This revealed that the password for user bandit20 is ` GbKksEFF4yrVs6il55v6gwY5a
 ## Level 21
 There is a setuid binary in the homedirectory that does the following: it makes a connection to localhost on the port you specify as a commandline argument. It then reads a line of text from the connection and compares it to the password in the previous level (bandit20). If the password is correct, it will transmit the password for the next level (bandit21).
 
+As before, the first thing I did upon finding an executable was to run it and see what happened (using `./suconnect`). This told me that I needed to give it a port number to connect to. As my initial thoughts were that there was a process running on the server that I would need to communicate with, I did a quick port scan with netcat (`nc -zv localhost 1-20000`). However, upon running suconnect, I realised that this was not going on - it was reading from the port it was given.
+For that reason, I realised I needed to set up a simple web server, something I again decided to do with netcat. Setting up a server can be done with `nc -l localhost -p 20133`.
+However, we also need this server to serve up some data (bandit20's password). This can be done with the following command
+
+``` echo GbKksEFF4yrVs6il55v6gwY5aVje5f0j | nc -l localhost -p 20133 & ```
+
+`Echo` simply repeats the text, the pipe operator means this is passed into our server and the single `&` operator means that this process will execute in the background. Once this has been set up, we can simply run `./suconnect 20133` to connect to this. At this point, it succesfully reads the password, and serves up the next one. 
+
+The password to bandit 21 is ` gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr `
 
 
 ## Level 22
