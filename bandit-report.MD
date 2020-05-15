@@ -265,4 +265,31 @@ This gives us the address 8ca319486bfbbc3663ea0fbe81326349. As we know that the 
 The password for bandit23 is `jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n`
 
 ## Level 24
+A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+
+This level starts in the same way as those before. By finding the bash script being executed by cron, we get this:
+
+```
+#!/bin/bash
+
+myname=$(whoami)
+
+cd /var/spool/$myname
+
+echo "Executing and deleting all scripts in /var/spool/$myname:"
+... 
+```
+
+From this, we know that we need to write a bash script that can be executed and will reveal the password.In order to write this, I first created a directory I could work in -- /tmp/lloyd. 
+I then wrote the following bash script:
+```
+#!/bin/bash
+cat /etc/bandit_pass/bandit24 > /tmp/lloyd/pass
+```
+
+This I saved as script.sh, set as executable by all users (using chmod 777), moved it to /var/spool/bandit 24 and waited for cron to work it's magic. After a couple of minutes, the password for bandit24 was in my conveniently named pass file, and could be read with a simple cat command.
+
+The password for bandit 24 is ` UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ `
+
+## Level 25
 
