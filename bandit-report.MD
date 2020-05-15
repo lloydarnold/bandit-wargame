@@ -191,3 +191,12 @@ The first thing that we need to do here is to find out which ports are open. Thi
 
 This tells us that there are five open ports. Using `openssl s_client` as above, we can test to see which ports are accepting ssl. When we find the correct port, we get an sshkey in response - this can be used to log into bandit17. 
 
+## Level 18
+There are 2 files in the homedirectory: passwords.old and passwords.new. The password for the next level is in passwords.new and is the only line that has been changed between passwords.old and passwords.new
+
+All we need to do here is find the difference between two files. Fortunately, there's a command for that -- `diff `. Running the command ` diff passwords.old passwords.new ` will identify which line has been changed, and give us the final password (as below).
+
+The password to Bandit 18 is ` kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd `
+
+## Level 19
+
