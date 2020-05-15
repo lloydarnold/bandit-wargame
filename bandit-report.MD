@@ -241,6 +241,28 @@ Inspecting this, again using `cat`, reveals to us that the script is copying the
 
  The password for bandit 22 is ` Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI `
 
- ## Level 23
- 
+## Level 23
+A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+
+Here, as before, we first need to navigate to our cron.d file, and read the relevant files. Having a look in cronjob_bandit23, we are once again directed to a bash script, as below:
+
+``` 
+#!/bin/bash
+
+myname=$(whoami)
+mytarget=$(echo I am user $myname | md5sum | cut -d ' ' -f 1)
+
+echo "Copying passwordfile /etc/bandit_pass/$myname to /tmp/$mytarget"
+
+cat /etc/bandit_pass/$myname > /tmp/$mytarget
+
+```
+
+The whoami command returns the username - in this case that is going to be bandit23. 
+The variable 'mytarget' is assigned to the output of ` (echo I am user $myname | md5sum | cut -d ' ' -f 1) `. We can therefore find the value of mytarget by running this command ourselves, but putting in bandit23 as $myname.
+This gives us the address 8ca319486bfbbc3663ea0fbe81326349. As we know that the user's password is being saved here, we can just check out the contents of this to get the password.
+
+The password for bandit23 is `jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n`
+
+## Level 24
 
