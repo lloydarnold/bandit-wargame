@@ -236,4 +236,11 @@ The password to bandit 21 is ` gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr `
 ## Level 22
 A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
 
+Navigating into the relevant folder, and then examining cronjob_bandit22 using `cat` we can see that it is executing the bash script, stored at `/usr/bin/cronjob_bandit22.sh`.
+Inspecting this, again using `cat`, reveals to us that the script is copying the contents of the password file to a hidden file, `/tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv`. Reading this gives us the password.
+
+ The password for bandit 22 is ` Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI `
+
+ ## Level 23
+ 
 
