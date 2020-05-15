@@ -199,4 +199,15 @@ All we need to do here is find the difference between two files. Fortunately, th
 The password to Bandit 18 is ` kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd `
 
 ## Level 19
+The password for the next level is stored in a file readme in the homedirectory. Unfortunately, someone has modified .bashrc to log you out when you log in with SSH.
 
+As the guidance said, simply logging in with SSH here was no good, because whilst we could get onto the system we are immediately kicked off. However, as we also know that the password is stored in a file called readme in the home directory, I realised that I didn't need to log in and move around - I could simply take the file directly.
+This I did using the ` scp ` command, to copy a remote file to my desktop. This gave me the following command : 
+
+``` scp -P 2220 bandit18@bandit.labs.overthewire.org:readme ./tmp ```
+
+Executing this (and entering the bandit18 password) logged into the server and copied the password file into the tmp folder in my working directory. 
+
+The password to bandit 19 is ` IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x `
+
+## Level 20
