@@ -292,4 +292,36 @@ This I saved as script.sh, set as executable by all users (using chmod 777), mov
 The password for bandit 24 is ` UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ `
 
 ## Level 25
+A daemon is listening on port 30002 and will give you the password for bandit25 if given the password for bandit24 and a secret numeric 4-digit pincode. There is no way to retrieve the pincode except by going through all of the 10000 combinations, called brute-forcing.
 
+Initially, I was tempted to use python to write the brute forcing script, as this is a scripting language I am particularly fond of, and most linux distributions have it installed by default.
+However, I realised that in some real world situations, this would not be an option, and I am working through this wargame to improve my own skills. For that reason, I decided to write a bash script instead.
+
+As we know that we need to try all ~ 10 000 combinations, we need some kind of script. 
+I created a script called `bruteforce.sh` with the command `touch bruteforce.sh` and then opened it with vim, a text editor.
+
+I spent a period of time trying to write a bash script that would open a connection and then send the pincode + password combo. This is broadly what I would have done in python.
+However, I ran into some difficulty with this, as I kept getting problems with timeouts and the volume of processes I was trying to start. For that reason, I changed strategy, opting instead to save all the passwords into a list, and then dump this into the connection. One iteration of my first iteration was like this:
+
+``` 
+  1 #!/bin/bash                                                                                                                                                                                          
+  2 password="UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ"
+  3  
+  4 for a in `seq 0 9`; do
+  5     for b in `seq 0 9`; do
+  6         for c in `seq 0 9`; do
+  7             for d in `seq 0 9`; do
+  8                 code="$a$b$c$d"
+  9                 echo $password\ $code | nc localhost 30002 &* ^C
+ 10             done
+ 11         done
+ 12     done
+ 13 done
+```
+
+However, this was no good, so I replaced line 9 with the following: ` echo $password\ $code >> passwords.tx `. This created a list of possible combinations.
+This can then be passed into the listener using ` cat passwords.txt | nc localhost 30002`. This revealed the password.
+
+The password of user bandit25 is ` uNG9O58gUE7snukf3bvZ0rxhtnjzSGzG `
+
+## Level 26
