@@ -325,3 +325,32 @@ This can then be passed into the listener using ` cat passwords.txt | nc localho
 The password of user bandit25 is ` uNG9O58gUE7snukf3bvZ0rxhtnjzSGzG `
 
 ## Level 26
+Logging in to bandit26 from bandit25 should be fairly easy… The shell for user bandit26 is not /bin/bash, but something else. Find out what it is, how it works and how to break out of it.
+
+We need to find out what shell user bandit26 is using; this information is likely to be stored in the /etc/passwd file. So, we take a look in here with `cat /etc/passwd | grep bandit26`. This command gives us the output:
+
+` bandit26:x:11026:11026:bandit level 26:/home/bandit26:/usr/bin/showtext `
+
+A quick google search tells us that the final item in this reading is the shell being used. So, we have a look at that with `cat /usr/bin/showtext`. This gives us the following script:
+
+```
+#!/bin/sh
+
+export TERM=linux
+
+more ~/text.txt
+exit 0
+
+```
+
+Checking permissions with `chmod` tells us that we cannot edit this file - this was my first thought. 
+Similarly, there was no mileage in editing the /etc/passwd file - this also had the correct permissions enabled. 
+In the end, I was seriously stuck, so ended up googling for a hint - a quick search pointed me to the fact that the way to prevent the script from fully executing was to trigger the `more` command in said script. This can be done by making the terminal window as small as possible.
+How does this help? Well, from here we can enter vim (by pressing v), and then once in vim we have all the handy commands that come with this - including, crucially, the ability to open a different file.
+In this instance, the file we want to open is `/etc/bandit_pass/bandit26`. This can be opened with:
+
+``` :e /etc/bandit_pass/bandit26 ```
+
+The password for bandit 26 is: ` 5czgV9L3Xx8JPOyRbXh6lQbmIOWvPT6Z `
+
+## Level 27
