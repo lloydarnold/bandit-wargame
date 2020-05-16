@@ -354,3 +354,15 @@ In this instance, the file we want to open is `/etc/bandit_pass/bandit26`. This 
 The password for bandit 26 is: ` 5czgV9L3Xx8JPOyRbXh6lQbmIOWvPT6Z `
 
 ## Level 27
+Good job getting a shell! Now hurry and grab the password for bandit27!
+
+Overthewire.org made one crucial mistake here - they overestimated my success from the previous level.
+However, this level did give me the perfect opportunity to actually learn what they wanted me to learn from the previous level, and get a shell. This I did by running `:set shell=/bin/bash` from within vim.
+From here, I was free to move around and operate as if I were in a normal terminal instance, except all my commands had to be preceded with `:!`.
+
+The first thing I did was to run `:! ls`, to know what I was dealing with. This revealed the `text.txt` file that we knew about, and a `bandit27-do` executable. I duly executed this.
+This was a SETUID binary, in a similar way to the one we saw a few levels ago. As such, I simply used it to read the `/etc/bandit_pass/bandit27` file using `cat`.
+
+The password for bandit27 is ` 3ba3118a22e93127a4ed485be72ef5ea `
+
+## Level 28
