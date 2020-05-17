@@ -68,4 +68,11 @@ Entering this to the form gives us the password we've been hunting for.
 The password for natas 7 is ` 7z3hEENjQtflzgnT29q7wAvMNfZdh0i9 `
 
 ## Level 7 -> 8
+On accessing this page, we see links to `home` and `about`. On clicking these, we can observe that the URL changes - after the URL, we have `index.php?page= <page>`.
+We also know that all the passwords for natas are stored in `/etc/natas_webpass/natas<n>` where n is the user (we are also reminded of this as an HTML comment).
+Simply putting this address into the <page> parameter serves up the password.
+
+The password for natas 8 is ` DBfUBfqQG69KvJvJ1iAbMoIpwSNQ9bWe `
+
+## Level 8 -> 9
 
