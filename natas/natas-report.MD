@@ -7,4 +7,9 @@ A quick right click -> inspect element reveals the password as an HTML comment.
 The password for natas 1 is ` gtVrDuiDfck831PqWsLEZy5gyDz1clto `
 
 ## Level 1 -> 2
+Again, we are told that the password is somewhere on the page, but right clicking has been blocked this time. No bother; we can simply hit f12 to pull up the developer pane. 
+The password is stored as an HTML comment again.
 
+The password for natas 2 is ` ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi `
+
+## Level 2 -> 3
