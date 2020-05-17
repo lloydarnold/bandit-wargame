@@ -109,5 +109,30 @@ If we then put the output of this into the form, we get the password back.
 The password for natas 9 is ` W0mMhUcRRnG8dcghE4qvk3JA9lGt8nDl `
 
 ## Level 9 -> 10
+Here, we are again greeted by a form. It asks us to submit a search term, and offers to return words relating to this. As before, we are able to view the source code by following a link. The PHP of this is as follows:
 
+``` 
+Output:
+<pre>
+<?
+$key = "";
+
+if(array_key_exists("needle", $_REQUEST)) {
+	$key = $_REQUEST["needle"];
+}
+
+if($key != "") {
+	passthru("grep -i $key dictionary.txt");
+}
+?>
+</pre>
+```
+
+The most interesting line here is `passthru("grep -i $key dictionary.txt")` -- this tells us that the script is passing out input directly into the command line.
+As we will be aware, it is possible to execute multiple commands on the same line with linux, by using the `&` operator.
+So, entering `& cat /etc/natas_webpass/natas10` into the key field should give us the password - and, indeed, does.
+
+The password for natas 10 is ` nOpp1igQAkUzaI1GUUjzn1bFVj7xCNzu `
+
+## Level 10 -> 11
 
