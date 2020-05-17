@@ -27,4 +27,14 @@ Sure enough, navigating to this file, we find out that natas3 wants google to ig
 The password for natas4 is ` Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ `
 
 ## Level 4 -> 5
+Arriving on the next page, we are greeted with `Access disallowed. You are visiting from "" while authorized users should come only from "http://natas5.natas.labs.overthewire.org/" `
+
+Somehow, we need to convince the webpage that we came from natas5. This can be done with the funky program BurpSuite -- this comes installed with kali linux, and otherwise can be downloaded pretty easily. 
+Once installed, it needs to be configured with your browser - this can be done pretty easily; you just need to add it as a proxy.
+Once this is done, navigate to the proxy tab on burp, turn intercept on and then refresh the page. The details of the HTTP request we just sent should appear.
+The `Referer` attribute should be set to natas4 - if we simply change this to natas5 and then forward the request then we all set:). Doing so gives us the password.
+
+The password for natas 5 is ` iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq `
+
+## Level 5 -> 6
 
