@@ -424,4 +424,23 @@ Unfortunately, this does not actually seem to point at anything - I was unable t
 Bandit 31's password is ` 47e603bb428404d265f59c42920d81e5 `
 
 ## Level 32
+There is a git repository at ssh://bandit31-git@localhost/home/bandit31-git/repo. The password for the user bandit31-git is the same as for the user bandit31.
+
+Start as before. Reading the README, we are told that this time we need to push a file called `key.txt` with contents `May I come in?`. 
+We can create this file with 
+
+`echo "May I come in?" > key.txt`
+
+And then commit it + push it with 
+
+`git commit . -m "add key file" && git push`
+
+We are then prompted for bandit31's password; entering this we are told that there is nothing to commit, working tree is clean.
+Not quite what we were hoping for. 
+Instead, we can try `git add key.txt` -- doing so tells us that it this is included in the `.gitignore`.
+We can get past this by simply running `git add key.txt -f`. Then, running `git push` sorts us out and gives us the file.
+
+The password for bandit 31 is ` 56a9bf19c63d650ce78e6ec0354ee45e `
+
+## Level 33
 
