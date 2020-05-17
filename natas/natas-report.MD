@@ -75,4 +75,39 @@ Simply putting this address into the <page> parameter serves up the password.
 The password for natas 8 is ` DBfUBfqQG69KvJvJ1iAbMoIpwSNQ9bWe `
 
 ## Level 8 -> 9
+Another PHP form here, checking the source code we see the following script:
+
+```
+<?
+
+$encodedSecret = "3d3d516343746d4d6d6c315669563362";
+
+function encodeSecret($secret) {
+    return bin2hex(strrev(base64_encode($secret)));
+}
+
+if(array_key_exists("submit", $_POST)) {
+    if(encodeSecret($_POST['secret']) == $encodedSecret) {
+        print "Access granted. The password for natas9 is <censored>";
+    } else {
+        print "Wrong secret";
+    }
+}
+?>
+```
+
+From this code, we can see that the script applies an encryption algorithm to the value we enter, and then compares this to the `$encodedsecret` variable.
+Therefore, applying the `encodeSecret` algorithm to encoded secret backwards will give us the value we need to enter.
+
+This can either be done in the terminal, or using online tools - it doesn't matter. All we need to do is take it from hex to binary, reverse this then apply a base64 decode. 
+If you wish to use a terminal, the following bash command will do it all in one step:
+
+`echo "3d3d516343746d4d6d6c315669563362" | xxd -r -p - | rev | base64 -d`
+
+If we then put the output of this into the form, we get the password back.
+
+The password for natas 9 is ` W0mMhUcRRnG8dcghE4qvk3JA9lGt8nDl `
+
+## Level 9 -> 10
+
 
