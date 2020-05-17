@@ -20,4 +20,11 @@ This contains the password for natas3.
 The password for natas 3 is ` sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14 `
 
 ## Level 3 -> 4
+As before, we are told that there is nothing on this page. A quick inspect element reveals to us an HTML comment, `<!-- No more information leaks!! Not even Google will find it this time... -->`.
+This suggests that this might have something to do with the robots.txt file; these exist in websites to tell a search engine to ignore certain pages.
+Sure enough, navigating to this file, we find out that natas3 wants google to ignore the file `/s3cr3t/`. Navigating here (again, via URL) we are greeted once more with the users.txt file.
+
+The password for natas4 is ` Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ `
+
+## Level 4 -> 5
 
