@@ -440,7 +440,18 @@ Not quite what we were hoping for.
 Instead, we can try `git add key.txt` -- doing so tells us that it this is included in the `.gitignore`.
 We can get past this by simply running `git add key.txt -f`. Then, running `git push` sorts us out and gives us the file.
 
-The password for bandit 31 is ` 56a9bf19c63d650ce78e6ec0354ee45e `
+The password for bandit 32 is ` 56a9bf19c63d650ce78e6ec0354ee45e `
 
 ## Level 33
+After all this git stuff its time for another escape. Good luck!
 
+On logging in, we are greeted with `WELCOME TO THE UPPERCASE SHELL`. Running commands is, seemingly, impossible -- anything we type in is met with `sh: 1: <COMMAND>: not found`. Problematic.
+I realised that this uppercase shell must be a script that was started from elsewhere. I also found that that the variable `$0` refers to the script from which the current shell was started -- "If Bash is invoked with a file of commands (see Section 3.8 [Shell Scripts], page 39), $0 is set to the name of that file."
+
+This is useful, as $0 is not a commad that will be affected by the shift to upper case. 
+After having run it, we are back out into a more usable shell. From here, simply running ` cat /etc/bandit_pass/bandit33 ` reveals the password. N.B. I couldn't actually work out how to exit ssh from here so I force stopped it.
+
+The password for bandit 33 is `c9c3199ddf4121b10cf581a98d51caee`
+
+## Level 34
+This level doesn't exist as of yet. Game complete :)
