@@ -43,4 +43,29 @@ This is currently set to 0. Changing it to 1 and refreshing the page, the text c
 The password for natas 6 is ` aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1 `
 
 ## Level 6 -> 7
+Here, we are greeted with a form that asks us to input a secret. We also have a link that we can follow to view the source code. Following this, we see a block of PHP -- this is code that wouldn't show up when inspecting page source in the normal way.
+The block of code that we see is as follows:
+
+```
+<?
+
+include "includes/secret.inc";
+
+    if(array_key_exists("submit", $_POST)) {
+        if($secret == $_POST['secret']) {
+            print "Access granted. The password for natas7 is <censored>";
+        } else {
+            print "Wrong secret";
+        }
+    }
+?>
+```
+
+This compares the value of the variable `$secret` to what the user enters. Unfortunately, we don't know the value of secret.
+However, we can notice that the code starts off with `includes/secret.inc`. By adding this to our url, we can see the contents of this file and, crucially, the value of secret.
+Entering this to the form gives us the password we've been hunting for.
+
+The password for natas 7 is ` 7z3hEENjQtflzgnT29q7wAvMNfZdh0i9 `
+
+## Level 7 -> 8
 
