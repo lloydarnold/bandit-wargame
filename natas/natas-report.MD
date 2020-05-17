@@ -37,4 +37,10 @@ The `Referer` attribute should be set to natas4 - if we simply change this to na
 The password for natas 5 is ` iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq `
 
 ## Level 5 -> 6
+On arrival, we are told that access wasn't allowed and we're not allowed in. Checking our cookies (this can be done with either a browser extension or with Burp Suite), we find a conspicuously named 'loggedin'. 
+This is currently set to 0. Changing it to 1 and refreshing the page, the text changes to say we are now logged in. This also gives us the password.
+
+The password for natas 6 is ` aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1 `
+
+## Level 6 -> 7
 
