@@ -397,7 +397,7 @@ Again, simply reading the README.md file bears no fruits - we are told that ther
 This strikes me as a suggestion that there may be another branch, containing the password, as production in git often occurs on topic branches. Unfortunately, that's not the case in this scenario - I checked with `git branch` and discovered that the only branch that existed was the one checked out, `master`.
 However, running `git log --all` revealed some extra commits, that hadn't been shown with a simple `git log`. One of this was conveniently titled `add some silly exploit, just for shit and giggles` so lets have a look at this, again using `git checkout <commit hash>`.
 
-We now have an extra folder called `exploits` that we can take a look at. Unfortunately, this contains just one file 'horde5.md`, which is empty. Checking the permissions on this file bears no fruit - we discover that it has permissions 644 (rw for root, r only for others) and as such doesn't contain some secret script. 
+We now have an extra folder called `exploits` that we can take a look at. Unfortunately, this contains just one file `horde5.md`, which is empty. Checking the permissions on this file bears no fruit - we discover that it has permissions 644 (rw for root, r only for others) and as such doesn't contain some secret script. 
 Moving further back in the log, we can also see a commit `add gif2ascii`.
 Having a look at this is, unfortunately, similarly disappointing - gif2ascii.py is also an empty file. 
 However, running `git diff 786d5` from the commit that added gif2ascii.py, we discover that they are actually the same file, simply renamed. 
@@ -411,4 +411,17 @@ One such branch was `origin/dev` -- this contained the password. Interestingly, 
 The password for bandit 30 is ` 5b90576bedb2cc04c86a9e924ce42faf `
 
 ## Level 31
+There is a git repository at ssh://bandit30-git@localhost/home/bandit30-git/repo. The password for the user bandit30-git is the same as for the user bandit30.
+
+Start in the same way as before. Reading the README.md file gives us the following:
+
+` just an empty file... muahaha `
+
+Interesting. `Git log --all` shows us that there is only one commit, and `git branch -r` shows us that there are no hidden branches. What else then? After digging through the .git directory for a while and having no luck, I remembered about git tagging.
+Running `git tag` should reveal to us any tags that had been applied to the git log in the past - sure enough, this tells us of a `secret` tag.
+Unfortunately, this does not actually seem to point at anything - I was unable to check out to `tags/secret`. However, using `git show` I was able to get what I initially thought was the hash of a commit, but when this wasn't the case I thought maybe it was bandit 31's password. It was.
+
+Bandit 31's password is ` 47e603bb428404d265f59c42920d81e5 `
+
+## Level 32
 
