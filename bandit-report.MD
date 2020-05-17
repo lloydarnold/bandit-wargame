@@ -366,3 +366,28 @@ This was a SETUID binary, in a similar way to the one we saw a few levels ago. A
 The password for bandit27 is ` 3ba3118a22e93127a4ed485be72ef5ea `
 
 ## Level 28
+There is a git repository at ssh://bandit27-git@localhost/home/bandit27-git/repo. The password for the user bandit27-git is the same as for the user bandit27.
+
+All we need to do here is to clone the git repo to the local machine. In order to do this, we first create a new directory in `/tmp/`. Then, we can simply run `git clone` plus the address that the instructions gave us.
+This creates a new folder called `repo`, navigating into here we find a file called `README`, opening this we get the password.
+
+The password for bandit28 ` 0ef186ac70e04ea33b4c1853d2526fa2 `
+
+## Level 29
+There is a git repository at ssh://bandit28-git@localhost/home/bandit28-git/repo. The password for the user bandit28-git is the same as for the user bandit28.
+
+Again, here we navigate to our tmp directory, and work from here. We run `git clone` and then the address that we were given. When we are prompted for a password, we simply enter the password for bandit28 -- this authenticates the connection. We can then proceed in the same was as in the previous level.
+
+However, upon inspecting the README file, we find that bandit29's password has been redacted, and replaced with `xxxxxxxxxxxxxxxxxxxx`. No trouble, however, as git is a version control system.
+All we need to do here is to run `git log`, to get a record of the changes that were made. Bingo - here we find out that the most recent commit was to `fix info leak`.
+Presumably, then, all we need to do to checkout a previous version of the file, and that will contain the password. 
+This can be done with 
+
+`git checkout c086d11a`
+
+The hash being the signature of the commit we want to take a look at. We take a look into the README file now and, bingo - got it.
+
+The password for bandit29 is ` bbc96594b4e001778eee9975372716b2 `
+
+## Level 30
+
