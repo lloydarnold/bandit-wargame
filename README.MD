@@ -1,1 +1,1 @@
-Walkthrough of my progress through overthewire.org\'s bandit wargame.
+Walkthrough of my progress through wargames on overthewire.org -- thanks guys! They're awesome:).
