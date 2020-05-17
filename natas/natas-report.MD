@@ -135,4 +135,17 @@ So, entering `& cat /etc/natas_webpass/natas10` into the key field should give u
 The password for natas 10 is ` nOpp1igQAkUzaI1GUUjzn1bFVj7xCNzu `
 
 ## Level 10 -> 11
+On reaching this page, we are met with an almost identical screen to last time, except now 'For security reasons, we now filter on certain characters'.
+Checking the source code, we see the following line:
 
+`if(preg_match('/[;|&]/',$key)) { `
+
+This tells us that the system isn't allowing the usual operators used to join linux commands together. 
+Is there another way of joining commands? One would think so, but a hunt through various forums bore no fruits.
+However, we ARE still being allowed to access the command line directly, so maybe we could exploit `grep`. The syntax for this command is <search string> <file>. 
+Let's try, then, putting in `. /etc/natas_webpass/natas11` -- this should match anything in the file `/etc/natas_webpass/natas11`, and print it to the screen.
+
+This worked, and revealed the password to be ` U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK `
+
+## Level 11 -> 12
+ 
