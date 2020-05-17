@@ -390,4 +390,25 @@ The hash being the signature of the commit we want to take a look at. We take a 
 The password for bandit29 is ` bbc96594b4e001778eee9975372716b2 `
 
 ## Level 30
+s a git repository at ssh://bandit29-git@localhost/home/bandit29-git/repo. The password for the user bandit29-git is the same as for the user bandit29.
+
+Begin as in the previous two levels.
+Again, simply reading the README.md file bears no fruits - we are told that there are "no passwords in production".
+This strikes me as a suggestion that there may be another branch, containing the password, as production in git often occurs on topic branches. Unfortunately, that's not the case in this scenario - I checked with `git branch` and discovered that the only branch that existed was the one checked out, `master`.
+However, running `git log --all` revealed some extra commits, that hadn't been shown with a simple `git log`. One of this was conveniently titled `add some silly exploit, just for shit and giggles` so lets have a look at this, again using `git checkout <commit hash>`.
+
+We now have an extra folder called `exploits` that we can take a look at. Unfortunately, this contains just one file 'horde5.md`, which is empty. Checking the permissions on this file bears no fruit - we discover that it has permissions 644 (rw for root, r only for others) and as such doesn't contain some secret script. 
+Moving further back in the log, we can also see a commit `add gif2ascii`.
+Having a look at this is, unfortunately, similarly disappointing - gif2ascii.py is also an empty file. 
+However, running `git diff 786d5` from the commit that added gif2ascii.py, we discover that they are actually the same file, simply renamed. 
+I continued to explore these files for a period of time, trying to run them with python and seeing if there was anything that I could do to get more out of them. There was not. 
+
+At this point, I turned back to my initial idea that there may be more branches than meet the eye - the "no passwords in production" sentence gave me this vibe, and it was reinforced by the fact that `git log --all` showed more than a simple `git log` - this suggests that there were more branches.
+So, a quick bit of research later, I found out that git clone doesn't automatically bring all branches to your local machine, and running git branch -r would allow us to check remote branches. 
+Sure enough, there were several remote branches that hadn't come up previously. 
+One such branch was `origin/dev` -- this contained the password. Interestingly, the commit that added it `add data needed for development` had also been present when I ran `git log --all` - I just missed it as I was distracted by `add some exploit for shits n giggles`. 
+
+The password for bandit 30 is ` 5b90576bedb2cc04c86a9e924ce42faf `
+
+## Level 31
 
